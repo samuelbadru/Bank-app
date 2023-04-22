@@ -36,6 +36,8 @@ date || credit || debit || balance
 
 ## API
 
+Below are the methods expected to be called directly by users of the application.
+
 ### `new Account()`
 Creates an instance of the `Account` class, with a default balance of 0 and no transactions.
 
