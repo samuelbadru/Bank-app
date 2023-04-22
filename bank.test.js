@@ -32,5 +32,20 @@ describe('Account', () => {
     expect(account.transactions).toEqual([]);
   });
 
+  test('deposit transactions are recorded', () => {
+    const mockDate = new Date('2023-01-10');
+    const dateSpy = jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+    account.deposit(1000);
+    
+    expect(account.transactions[0]).toEqual({
+      transaction: 'deposit',
+      date: mockDate,
+      amount: 1000,
+      balance: 1000
+    });
+
+    dateSpy.mockRestore();
+  });
+
 
 });
