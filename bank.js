@@ -21,15 +21,20 @@ class Account{
   printStatement() {
     this.printHeader();
     this.transactions.forEach((record) => {
+      const format = this.formatTransaction(record)
+      if (record.transaction === 'deposit') {
+        console.log(`${format.date} || ${format.amount} || || ${format.balance}`);
+      } else {
+        console.log(`${format.date} || || ${format.amount} || ${format.balance}`);
+      }
+    });
+  }
+
+  formatTransaction(record) {
       const date = record.date.toLocaleDateString('en-UK');
       const amount = record.amount.toFixed(2);
       const balance = record.balance.toFixed(2);
-      if (record.transaction === 'deposit') {
-        console.log(`${date} || ${amount} || || ${balance}`);
-      } else {
-        console.log(`${date} || || ${amount} || ${balance}`);
-      }
-    });
+      return { date, amount, balance };
   }
 }
 
