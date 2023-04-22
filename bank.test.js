@@ -83,11 +83,8 @@ describe('Account', () => {
     const conSpy = jest.spyOn(console, 'log');
     account.printStatement();
     expect(conSpy).toHaveBeenCalledWith('date || credit || debit || balance');
-
     expect(conSpy).toHaveBeenCalledWith('14/01/2023 || || 500.00 || 2500.00');
-
     expect(conSpy).toHaveBeenCalledWith('13/01/2023 || 2000.00 || || 3000.00');
-
     expect(conSpy).toHaveBeenCalledWith('10/01/2023 || 1000.00 || || 1000.00');
   
     dateSpy.mockRestore();

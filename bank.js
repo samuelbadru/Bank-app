@@ -14,8 +14,12 @@ class Account{
     this.transactions.unshift({ transaction: 'withdrawal', date: new Date(), amount: amount, balance: this.balance })
   }
 
+  printHeader() {
+    console.log('date || credit || debit || balance');
+  }
+
   printStatement() {
-    console.log('date || credit || debit || balance')
+    this.printHeader();
     this.transactions.forEach((record) => {
       const date = record.date.toLocaleDateString('en-UK');
       const amount = record.amount.toFixed(2);
