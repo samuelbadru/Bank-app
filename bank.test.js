@@ -47,5 +47,19 @@ describe('Account', () => {
     dateSpy.mockRestore();
   });
 
+  test('withdrawal transactions are recorded', () => {
+    const mockDate = new Date('2023-01-14');
+    const dateSpy = jest.spyOn(global, 'Date').mockImplementation(() => mockDate);
+    account.withdrawal(500);
+    
+    expect(account.transactions[0]).toEqual({
+      transaction: 'withdrawal',
+      date: mockDate,
+      amount: 500,
+      balance: -500
+    });
+
+    dateSpy.mockRestore();
+  })
 
 });

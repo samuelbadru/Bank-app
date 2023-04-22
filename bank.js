@@ -11,6 +11,7 @@ class Account{
 
   withdrawal(amount) {
     this.balance -= amount;
+    this.transactions.push({ transaction: 'withdrawal', date: new Date(), amount: amount, balance: this.balance })
   }
 
 }
