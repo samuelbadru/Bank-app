@@ -18,15 +18,19 @@ class Account{
     console.log('date || credit || debit || balance');
   }
 
+  printRecord(record) {
+    const format = this.formatTransaction(record)
+    if (record.transaction === 'deposit') {
+      console.log(`${format.date} || ${format.amount} || || ${format.balance}`);
+    } else {
+      console.log(`${format.date} || || ${format.amount} || ${format.balance}`);
+    }
+  }
+
   printStatement() {
     this.printHeader();
     this.transactions.forEach((record) => {
-      const format = this.formatTransaction(record)
-      if (record.transaction === 'deposit') {
-        console.log(`${format.date} || ${format.amount} || || ${format.balance}`);
-      } else {
-        console.log(`${format.date} || || ${format.amount} || ${format.balance}`);
-      }
+      this.printRecord(record);
     });
   }
 
