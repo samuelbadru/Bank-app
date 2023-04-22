@@ -16,7 +16,9 @@ describe('Account', () => {
   });
 
   test('deposits increase the balance by that amount', () => {
-
+    account.deposit(1000);
+    account.deposit(2000);
+    expect(account.balance).toBe(3000);
   });
 
 
