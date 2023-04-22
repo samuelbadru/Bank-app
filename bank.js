@@ -4,6 +4,7 @@ class Account{
     this.transactions = [];
   }
 
+  // Transactions are stored in reverse chronological order 
   deposit(amount) {
     this.balance += amount;
     this.transactions.unshift({ transaction: 'deposit', date: new Date(), amount: amount, balance: this.balance })
@@ -12,6 +13,14 @@ class Account{
   withdrawal(amount) {
     this.balance -= amount;
     this.transactions.unshift({ transaction: 'withdrawal', date: new Date(), amount: amount, balance: this.balance })
+  }
+
+  formatTransaction(record) {
+    // Date converted to DD/MM/YYYY format and floats are rounded to 2 decimal points
+    const date = record.date.toLocaleDateString('en-UK');
+    const amount = record.amount.toFixed(2);
+    const balance = record.balance.toFixed(2);
+    return { date, amount, balance };
   }
 
   printHeader() {
@@ -33,13 +42,7 @@ class Account{
       this.printRecord(record);
     });
   }
-
-  formatTransaction(record) {
-      const date = record.date.toLocaleDateString('en-UK');
-      const amount = record.amount.toFixed(2);
-      const balance = record.balance.toFixed(2);
-      return { date, amount, balance };
-  }
+  
 }
 
 module.exports = Account
