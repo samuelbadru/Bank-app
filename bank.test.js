@@ -60,6 +60,12 @@ describe('Account', () => {
     });
 
     dateSpy.mockRestore();
+  });
+
+  test('print statement headings when no transactions have been made', () => {
+    const conSpy = jest.spyOn(console, 'log');
+    account.printStatement();
+    expect(conSpy).toHaveBeenCalledWith('date || credit || debit || balance');
   })
 
 });

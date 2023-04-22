@@ -14,6 +14,10 @@ class Account{
     this.transactions.push({ transaction: 'withdrawal', date: new Date(), amount: amount, balance: this.balance })
   }
 
+  printStatement() {
+    console.log('date || credit || debit || balance')
+  }
+
 }
 
 module.exports = Account
