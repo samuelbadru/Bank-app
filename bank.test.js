@@ -28,5 +28,9 @@ describe('Account', () => {
     expect(account.balance).toBe(2500)
   });
 
+  test('no transactions in new account', () => {
+    expect(account.transactions).toEqual([]);
+  });
+
 
 });
