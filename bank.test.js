@@ -21,5 +21,12 @@ describe('Account', () => {
     expect(account.balance).toBe(3000);
   });
 
+  test('withdrawals decrease the balance by that ammount', () => {
+    account.deposit(1000);
+    account.deposit(2000);
+    account.withdrawal(500);
+    expect(account.balance).toBe(2500)
+  });
+
 
 });
